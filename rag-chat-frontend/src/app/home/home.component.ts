@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ChatComponent } from '../chat/chat.component';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -32,4 +33,23 @@ export class HomeComponent {
       action: 'View Evaluation',
     },
   ];
+
+  documents: any[] = [];
+  private apiService = inject(ApiService);
+
+  constructor() {
+    this.getAllDocuments();
+  }
+
+  getAllDocuments() {
+    this.apiService.getDocuments().subscribe({
+      next: (response) => {
+        console.log(response);
+        this.documents = response;
+      },
+      error: (error) => {
+        console.error('Backend Error:', error);
+      },
+    });
+  }
 }
