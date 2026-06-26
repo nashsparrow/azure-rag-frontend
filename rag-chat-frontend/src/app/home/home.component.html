@@ -1,1 +1,70 @@
-<p>home works!</p>
+<div class="page-body">
+  <div class="dashboard-grid">
+    <section class="left-panel">
+      <mat-card class="title-card">
+        <div>
+          <h3>RAG n Chat</h3>
+          <p>
+            Ask questions about your documents and get AI-powered answers with
+            verified sources.
+          </p>
+        </div>
+        <div class="title-graphic">
+          <mat-icon>description</mat-icon>
+          <mat-icon>search</mat-icon>
+        </div>
+      </mat-card>
+
+      <div class="stats-grid">
+        <mat-card class="title-card">
+          <h1>Upload Document</h1>
+          <p>Upload your documents to build your knowledge base.</p>
+          <div class="upload-box">
+            <mat-icon>cloud_upload</mat-icon>
+            <span>Drag & drop files here</span>
+            <span>or</span>
+            <button mat-flat-button>Choose Files</button>
+            <small>PDF (Max 3MB per file)</small>
+          </div>
+        </mat-card>
+
+        <mat-card class="title-card">
+          <h1>Documents Count</h1>
+          <p>Overview of your indexed documents.</p>
+          <div class="docs-count">
+            <div class="count-icon"><mat-icon>description</mat-icon></div>
+            <div>
+              <div class="count-number">12</div>
+              <div class="count-label">Documents Indexed</div>
+            </div>
+          </div>
+          <div class="mini-stats">
+            <div class="mini-stat">
+              <mat-icon>check_circle</mat-icon>
+              <span>12 Indexed</span>
+            </div>
+            <div class="mini-stat">
+              <mat-icon>schedule</mat-icon>
+              <span>May 20, 2024</span>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+
+      <div class="quick-grid">
+        @for (card of quickCards; track card.title) {
+          <mat-card class="title-card">
+            <mat-icon>{{ card.icon }}</mat-icon>
+            <h4>{{ card.title }}</h4>
+            <p>{{ card.subtitle }}</p>
+            <button mat-stroked-button>{{ card.action }}</button>
+          </mat-card>
+        }
+      </div>
+    </section>
+
+    <section class="right-panel">
+      <app-chat></app-chat>
+    </section>
+  </div>
+</div>

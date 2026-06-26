@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --bg: #f7f5ff;
+  --surface: #ffffff;
+  --surface-soft: #f4f1ff;
+  --border: #d9ddf1;
+  --border-soft: #e9e3ff;
+  --primary: #6c63ff;
+  --primary-strong: #4f46e5;
+  --text: #1f2340;
+  --muted: #6b7280;
+  --user-bubble: #eef2ff;
+  --bot-bubble: #f9fafb;
+  --success: #22c55e;
+  --info: #2563eb;
+  --secure: #a855f7;
+}
 
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #fbfaff 0%, var(--bg) 55%, #f3f4ff 100%);
+  color: var(--text);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
