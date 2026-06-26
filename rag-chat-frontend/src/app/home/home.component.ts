@@ -9,13 +9,27 @@ import { ChatComponent } from '../chat/chat.component';
   standalone: true,
   imports: [MatCardModule, MatIconModule, MatButtonModule, ChatComponent],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   quickCards = [
-    { icon: 'query_stats', title: 'Performance Evaluation Results', subtitle: 'View retrieval and generation performance metrics.', action: 'View Results' },
-    { icon: 'code', title: 'GitHub Repo', subtitle: 'View source code and project repository.', action: 'View Repository' },
-    { icon: 'account_tree', title: 'Architecture', subtitle: 'Explore the system architecture and pipeline.', action: 'View Architecture' },
-    { icon: 'verified_user', title: 'Performance Evaluation', subtitle: 'Detailed performance analysis and insights.', action: 'View Evaluation' }
+    {
+      icon: 'code',
+      title: 'GitHub Repo',
+      subtitle: 'View source code and project repository.',
+      action: 'View Repository',
+    },
+    {
+      icon: 'account_tree',
+      title: 'Architecture',
+      subtitle: 'Explore the system architecture and pipeline.',
+      action: 'View Architecture',
+    },
+    {
+      icon: 'verified_user',
+      title: 'Performance Evaluation',
+      subtitle: 'Detailed performance analysis and insights.',
+      action: 'View Evaluation',
+    },
   ];
 }

@@ -5,8 +5,8 @@
   --surface-soft: #f4f1ff;
   --border: #d9ddf1;
   --border-soft: #e9e3ff;
-  --primary: #6c63ff;
-  --primary-strong: #4f46e5;
+  --primary: #9620db;
+  --primary-strong: #c546e5;
   --text: #1f2340;
   --muted: #6b7280;
   --user-bubble: #eef2ff;
@@ -20,11 +20,30 @@ html, body {
   height: 100%;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", "Manrope", sans-serif;
+}
+
+
 body {
   margin: 0;
   background: radial-gradient(circle at top, #fbfaff 0%, var(--bg) 55%, #f3f4ff 100%);
   color: var(--text);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Manrope", "Roboto", "Helvetica Neue", sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-mdc-unelevated-button.mat-primary,
+.mat-mdc-fab.mat-primary,
+.mat-mdc-mini-fab.mat-primary {
+  --mdc-filled-button-container-color: var(--primary);
+  --mdc-filled-button-label-text-color: #ffffff;
+  --mdc-fab-container-color: #ff637a;
+  --mdc-fab-icon-color: #ffffff;
+}
+
+.mat-mdc-outlined-button.mat-primary {
+  --mdc-outlined-button-label-text-color:  var(--primary);
+  --mdc-outlined-button-outline-color:  var(--primary);
+}
+

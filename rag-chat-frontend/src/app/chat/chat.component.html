@@ -1,1 +1,44 @@
-<p>chat works!</p>
+<mat-card class="chat-card">
+  <div class="chat-header">
+    <div class="chat-title">
+      <mat-icon>mode_comment</mat-icon>
+      <span>Chat</span>
+    </div>
+    <button mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </div>
+
+  <div class="chat-body">
+    @for (message of messages; track $index) {
+      <div class="message-row" [class.user-row]="message.type === 'user'">
+        <div class="bot-icon" *ngIf="message.type === 'bot'">
+          <mat-icon>smart_toy</mat-icon>
+        </div>
+
+        <div
+          class="message-bubble"
+          [class.user-bubble]="message.type === 'user'"
+          [class.bot-bubble]="message.type === 'bot'"
+        >
+          <div class="message-text">{{ message.text }}</div>
+          <div class="message-time">{{ message.time }}</div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="chat-input-wrap">
+    <mat-form-field appearance="outline" class="chat-input">
+      <input
+        matInput
+        [(ngModel)]="prompt"
+        placeholder="Enter your question here..."
+      />
+    </mat-form-field>
+
+    <button mat-fab class="send-btn" aria-label="Send">
+      <mat-icon>send</mat-icon>
+    </button>
+  </div>
+</mat-card>

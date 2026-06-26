@@ -16,17 +16,14 @@
   gap: 16px;
 }
 
-.title-card,
-.upload-card,
-.docs-card,
-.quick-card,
-.footer-strip {
+.all-cards,
+.quick-card {
   border-radius: 20px;
   border: 1px solid var(--border-soft);
   box-shadow: 0 10px 30px rgba(108, 99, 255, 0.06);
 }
 
-.title-card {
+.all-cards {
   padding: 24px;
   display: flex;
   justify-content: space-between;
@@ -34,12 +31,20 @@
   background: linear-gradient(135deg, #f7f4ff 0%, #ffffff 100%);
 }
 
-.title-card h1 {
-  margin: 0 0 10px;
+.title-card {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  background: #e6cdfdc7;
+  height: 300px;
+}
+
+.all-cards h1 {
   font-size: 30px;
 }
 
-.title-card p,
+.all-cards p,
 .upload-card p,
 .docs-card p,
 .quick-card p {
@@ -48,20 +53,20 @@
   line-height: 1.6;
 }
 
-.title-graphic {
+.all-graphic {
   position: relative;
   width: 120px;
   height: 120px;
 }
 
-.title-graphic mat-icon:first-child {
+.all-graphic mat-icon:first-child {
   font-size: 90px;
   width: 90px;
   height: 90px;
   color: #c7c2ff;
 }
 
-.title-graphic mat-icon:last-child {
+.all-graphic mat-icon:last-child {
   position: absolute;
   right: 0;
   bottom: 6px;
@@ -82,7 +87,7 @@
 }
 
 .quick-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .upload-card,
@@ -182,4 +187,15 @@
   .quick-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.all-cards:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(108, 99, 255, 0.12);
+  border-color: #cfc4ff;
+}
+
+.all-buttonall-icon
+{
+    color:#8a4bc1;
 }
