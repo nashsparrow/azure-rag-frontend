@@ -31,7 +31,10 @@
           <button mat-flat-button color="primary">Choose File</button>
         </mat-card>
 
-        <mat-card class="all-cards">
+        <mat-card
+          class="all-cards clickable-card"
+          (click)="openDocumentsDialog()"
+        >
           <h1>Documents</h1>
           <p>Overview of your indexed documents.</p>
           <div class="docs-count">

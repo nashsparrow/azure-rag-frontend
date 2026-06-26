@@ -1,0 +1,13 @@
+.doc-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  padding-top: 8px;
+}
+
+.doc-item {
+  padding: 12px 14px;
+  border: 1px solid #e9e3ff;
+  border-radius: 12px;
+  background: #f9f7ff;
+}

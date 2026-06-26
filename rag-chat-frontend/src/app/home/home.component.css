@@ -9,15 +9,13 @@
   align-items: start;
 }
 
-
 .left-panel {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.all-cards,
-.quick-card {
+.all-cards {
   border-radius: 20px;
   border: 1px solid var(--border-soft);
   box-shadow: 0 10px 30px rgba(108, 99, 255, 0.06);
@@ -43,36 +41,10 @@
   font-size: 30px;
 }
 
-.all-cards p,
-.upload-card p,
-.docs-card p,
-.quick-card p {
+.all-cards p {
   margin: 0;
   color: var(--muted);
   line-height: 1.6;
-}
-
-.all-graphic {
-  position: relative;
-  width: 120px;
-  height: 120px;
-}
-
-.all-graphic mat-icon:first-child {
-  font-size: 90px;
-  width: 90px;
-  height: 90px;
-  color: #c7c2ff;
-}
-
-.all-graphic mat-icon:last-child {
-  position: absolute;
-  right: 0;
-  bottom: 6px;
-  font-size: 54px;
-  width: 54px;
-  height: 54px;
-  color: var(--primary);
 }
 
 .stats-grid,
@@ -89,26 +61,6 @@
   grid-template-columns: repeat(3, 1fr);
 }
 
-.upload-card,
-.docs-card,
-.quick-card {
-  padding: 20px;
-}
-
-.upload-box {
-  margin-top: 16px;
-  min-height: 190px;
-  border: 1px dashed var(--border);
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  gap: 8px;
-  color: var(--muted);
-}
-
-.upload-box mat-icon,
-.quick-card mat-icon,
 .count-icon {
   color: var(--primary);
 }
@@ -132,39 +84,11 @@
 .count-number {
   font-size: 42px;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .count-label {
   color: var(--muted);
-}
-
-.mini-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.mini-stat,
-.footer-strip div {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.quick-card {
-  text-align: center;
-}
-
-.quick-card button {
-  margin-top: 12px;
-}
-
-.footer-strip {
-  padding: 18px 20px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
 }
 
 .right-panel {
@@ -194,7 +118,12 @@
   border-color: #cfc4ff;
 }
 
-.all-buttonall-icon
-{
-    color:#8a4bc1;
+.clickable-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.clickable-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(108, 99, 255, 0.12);
 }

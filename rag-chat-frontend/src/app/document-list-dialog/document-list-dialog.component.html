@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Indexed Documents</h2>
+
+<mat-dialog-content>
+  <div class="doc-grid">
+    @for (doc of documents; track doc.id) {
+      <div class="doc-item">
+        <b>File Name:</b> {{ doc.fileName }} <b>Created At:</b>
+        {{ doc.createdUtc | date: "dd MM yyyy, h:mm a" }}
+      </div>
+    }
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
