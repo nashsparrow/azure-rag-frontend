@@ -58,7 +58,7 @@
 }
 
 .quick-grid {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .count-icon {
@@ -126,4 +126,9 @@
 .clickable-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 30px rgba(108, 99, 255, 0.12);
+}
+
+.quick-grid-button
+{
+    margin-top: 10px;
 }

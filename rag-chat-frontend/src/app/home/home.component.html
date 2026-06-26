@@ -53,9 +53,15 @@
             <mat-icon>{{ card.icon }}</mat-icon>
             <h6 style="text-align: center">{{ card.title }}</h6>
             <p style="text-align: center">{{ card.subtitle }}</p>
-            <button mat-stroked-button color="primary">
+            <a
+              mat-stroked-button
+              color="primary"
+              class="quick-grid-button"
+              [href]="card.link"
+              target="_blank"
+            >
               {{ card.action }}
-            </button>
+            </a>
           </mat-card>
         }
       </div>

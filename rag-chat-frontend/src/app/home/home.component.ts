@@ -24,9 +24,19 @@ export class HomeComponent {
   quickCards = [
     {
       icon: 'code',
-      title: 'GitHub Repo',
-      subtitle: 'View source code and project repository.',
+      title: 'Backend GitHub Repo',
+      subtitle:
+        'View source code and project repository for the C# and Azure Pipeline.',
       action: 'View Repository',
+      link: 'https://github.com/nashsparrow/azure-c-sharp-rag-assistant',
+    },
+    {
+      icon: 'code',
+      title: 'Frontend GitHub Repo',
+      subtitle:
+        'View source code and project repository for the Frontend implemented in Angular.',
+      action: 'View Repository',
+      link: 'https://github.com/nashsparrow/azure-rag-frontend',
     },
     {
       icon: 'account_tree',
