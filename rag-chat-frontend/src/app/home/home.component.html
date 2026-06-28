@@ -28,7 +28,16 @@
         <mat-card class="all-cards">
           <h1>Upload Document</h1>
           <p>Upload your document to build your knowledge base.</p>
-          <button mat-flat-button color="primary">Choose File</button>
+          <input
+            #fileInput
+            type="file"
+            hidden
+            accept=".pdf"
+            (change)="onFileSelected($event)"
+          />
+          <button mat-flat-button color="primary" (click)="fileInput.click()">
+            Choose File
+          </button>
         </mat-card>
 
         <mat-card
