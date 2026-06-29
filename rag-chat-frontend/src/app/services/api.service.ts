@@ -22,7 +22,13 @@ export class ApiService {
   }
 
   getUploadStatus(jobId: string): Observable<any> {
-    console.log('queryinggg status');
     return this.http.get(`${this.baseUrl}/documents/getstatus/${jobId}`);
+  }
+
+  getChatResult(question: string): Observable<any> {
+    const body = {
+      question: question,
+    };
+    return this.http.post(`${this.baseUrl}/query/chat/sk`, body);
   }
 }
