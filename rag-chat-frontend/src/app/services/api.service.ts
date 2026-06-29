@@ -12,4 +12,17 @@ export class ApiService {
   getDocuments(): Observable<any> {
     return this.http.get(`${this.baseUrl}/documents/getall`);
   }
+
+  uploadDocument(file: File, jobId: string): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('indexing', 'true');
+    formData.append('jobid', jobId);
+    return this.http.post(`${this.baseUrl}/documents/upload`, formData);
+  }
+
+  getUploadStatus(jobId: string): Observable<any> {
+    console.log('queryinggg status');
+    return this.http.get(`${this.baseUrl}/documents/getstatus/${jobId}`);
+  }
 }

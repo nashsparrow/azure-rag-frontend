@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ data.title }}</h2>
+
+<mat-dialog-content>
+  <div class="status-header">
+    <span class="status-text">{{ data.status }}</span>
+    <mat-progress-spinner
+      *ngIf="data.status !== 'completed' && data.status !== 'failed'"
+      diameter="24"
+      mode="indeterminate"
+    >
+    </mat-progress-spinner>
+  </div>
+
+  <div class="step-list">
+    @for (step of data.steps; track step.key) {
+      <div class="step-row">
+        <mat-icon [class.done]="step.done">
+          {{ step.done ? "check_circle" : "radio_button_unchecked" }}
+        </mat-icon>
+        <span>{{ step.label }}</span>
+      </div>
+    }
+  </div>
+</mat-dialog-content>
