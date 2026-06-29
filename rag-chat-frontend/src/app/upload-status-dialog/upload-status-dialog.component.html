@@ -4,12 +4,20 @@
   <div class="status-header">
     <span class="status-text">{{ data.status }}</span>
     <mat-progress-spinner
-      *ngIf="data.status !== 'completed' && data.status !== 'failed'"
+      *ngIf="!data.hasError && data.status !== 'completed' && data.status !== 'failed'"
       diameter="24"
       mode="indeterminate"
     >
     </mat-progress-spinner>
   </div>
+
+  @if (data.hasError && data.errorMessage) {
+    <p class="error-message">{{ data.errorMessage }}</p>
+  }
+
+  @if (data.hasSuccess && data.successMessage) {
+    <p class="success-message">{{ data.successMessage }}</p>
+  }
 
   <div class="step-list">
     @for (step of data.steps; track step.key) {
@@ -22,3 +30,9 @@
     }
   </div>
 </mat-dialog-content>
+
+@if (data.hasError || data.hasSuccess) {
+  <mat-dialog-actions align="end">
+    <button mat-stroked-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+}

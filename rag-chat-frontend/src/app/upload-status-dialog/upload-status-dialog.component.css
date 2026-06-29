@@ -10,6 +10,19 @@
   text-transform: capitalize;
 }
 
+.error-message {
+  margin: 0 0 16px;
+  color: #dc2626;
+  line-height: 1.5;
+}
+
+.success-message {
+  margin: 0 0 16px;
+  color: #16a34a;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
 .step-list {
   display: grid;
   gap: 12px;

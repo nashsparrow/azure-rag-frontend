@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
@@ -14,6 +15,10 @@ export interface UploadStatusData {
   title: string;
   status: string;
   steps: UploadStep[];
+  hasError: boolean;
+  hasSuccess?: boolean;
+  errorMessage?: string;
+  successMessage?: string;
 }
 
 @Component({
@@ -22,6 +27,7 @@ export interface UploadStatusData {
   imports: [
     CommonModule,
     MatDialogModule,
+    MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
   ],

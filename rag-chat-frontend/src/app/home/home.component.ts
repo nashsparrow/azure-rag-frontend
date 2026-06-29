@@ -129,6 +129,8 @@ export class HomeComponent {
         title: 'Uploading Document',
         status: 'starting',
         steps: this.generateStepsFromId(''),
+        hasError: false,
+        hasSuccess: false,
       },
     });
 
@@ -165,13 +167,22 @@ export class HomeComponent {
             title: 'Uploading Document',
             status: statusResponse.status,
             steps: this.generateStepsFromId(statusResponse.status),
+            hasError: false,
+            hasSuccess:
+              statusResponse.status === DocumentStatus.Indexed ||
+              statusResponse.status === DocumentStatus.Completed,
+            successMessage:
+              statusResponse.status === DocumentStatus.Indexed ||
+              statusResponse.status === DocumentStatus.Completed
+                ? 'Uploaded successfully.'
+                : undefined,
           };
         },
         error: (error) => {
           console.error(error);
         },
         complete: () => {
-          setTimeout(() => dialogRef.close(), 1500);
+          dialogRef.disableClose = false;
         },
       });
 
@@ -182,7 +193,17 @@ export class HomeComponent {
       error: (error) => {
         pollSub.unsubscribe();
         console.error(error);
-        dialogRef.close();
+        dialogRef.disableClose = false;
+        dialogRef.componentInstance.data = {
+          title: 'Uploading Document',
+          status: 'Failed',
+          steps: this.generateStepsFromId(DocumentStatus.Failed),
+          hasError: true,
+          hasSuccess: false,
+          errorMessage:
+            error.error.message ??
+            'The upload request failed. Please close this dialog and try again.',
+        };
       },
     });
   }
