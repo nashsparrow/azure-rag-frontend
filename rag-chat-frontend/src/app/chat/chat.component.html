@@ -44,14 +44,39 @@
   <div class="chat-input-wrap">
     <mat-form-field appearance="outline" class="chat-input">
       <input
+        #questionModel="ngModel"
         matInput
         [(ngModel)]="question"
+        (ngModelChange)="onQuestionChange($event)"
         placeholder="Enter your question here..."
+        required
+        [minlength]="minQuestionLength"
+        maxlength="500"
         (keydown.enter)="sendMessage()"
       />
+      <mat-hint align="end">{{ question.length }}/{{ maxQuestionLength }}</mat-hint>
+      @if (questionModel.invalid && questionModel.touched && questionModel.errors?.['required']) {
+        <mat-error>Enter a question.</mat-error>
+      }
+      @if (questionModel.invalid && questionModel.touched && questionModel.errors?.['minlength']) {
+        <mat-error>
+          Enter at least {{ minQuestionLength }} characters.
+        </mat-error>
+      }
+      @if (questionModel.invalid && questionModel.touched && questionModel.errors?.['maxlength']) {
+        <mat-error>
+          Enter no more than {{ maxQuestionLength }} characters.
+        </mat-error>
+      }
     </mat-form-field>
 
-    <button mat-fab class="send-btn" aria-label="Send" (click)="sendMessage()">
+    <button
+      mat-fab
+      class="send-btn"
+      aria-label="Send"
+      (click)="sendMessage()"
+      [disabled]="!canSendMessage"
+    >
       <mat-icon>send</mat-icon>
     </button>
   </div>

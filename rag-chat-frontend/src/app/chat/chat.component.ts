@@ -6,7 +6,7 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +32,9 @@ import { ApiService } from '../services/api.service';
   styleUrl: './chat.component.css',
 })
 export class ChatComponent implements AfterViewChecked {
+  readonly minQuestionLength = 10;
+  readonly maxQuestionLength = 500;
+
   @ViewChild('chatBody') private chatBody?: ElementRef<HTMLDivElement>;
   private pendingScroll = false;
 
@@ -40,6 +43,26 @@ export class ChatComponent implements AfterViewChecked {
 
   messages: Message[] = [];
   apiService = inject(ApiService);
+
+  get trimmedQuestionLength(): number {
+    return this.question.trim().length;
+  }
+
+  get isQuestionTooShort(): boolean {
+    return this.question.length > 0 && this.trimmedQuestionLength < this.minQuestionLength;
+  }
+
+  get isQuestionTooLong(): boolean {
+    return this.question.length > this.maxQuestionLength;
+  }
+
+  get canSendMessage(): boolean {
+    return (
+      !this.isAwaitingResponse &&
+      this.trimmedQuestionLength >= this.minQuestionLength &&
+      this.question.length <= this.maxQuestionLength
+    );
+  }
 
   chatWithModel() {
     const question = this.question.trim();
@@ -72,9 +95,25 @@ export class ChatComponent implements AfterViewChecked {
   }
 
   sendMessage() {
-    if (this.question?.trim()) {
+    if (!this.canSendMessage) {
+      this.questionModel?.control.markAsTouched();
+      return;
+    }
+
+    if (this.canSendMessage) {
       this.chatWithModel();
     }
+  }
+
+  @ViewChild('questionModel') private questionModel?: NgModel;
+
+  onQuestionChange(value: string): void {
+    if (value.trim().length !== 0) {
+      return;
+    }
+
+    this.questionModel?.control.markAsPristine();
+    this.questionModel?.control.markAsUntouched();
   }
 
   ngAfterViewChecked(): void {
