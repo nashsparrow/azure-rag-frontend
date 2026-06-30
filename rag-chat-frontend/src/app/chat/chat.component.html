@@ -9,7 +9,7 @@
     </button>
   </div>
 
-  <div class="chat-body">
+  <div class="chat-body" #chatBody>
     @for (message of messages; track $index) {
       <div class="message-row" [class.user-row]="message.type === 'user'">
         <div class="bot-icon" *ngIf="message.type === 'bot'">
@@ -26,6 +26,19 @@
         </div>
       </div>
     }
+
+    @if (isAwaitingResponse) {
+      <div class="message-row">
+        <div class="bot-icon">
+          <mat-icon>smart_toy</mat-icon>
+        </div>
+
+        <div class="message-bubble bot-bubble loading-bubble">
+          <div class="loading-label">Generating response...</div>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+    }
   </div>
 
   <div class="chat-input-wrap">
@@ -34,6 +47,7 @@
         matInput
         [(ngModel)]="question"
         placeholder="Enter your question here..."
+        (keydown.enter)="sendMessage()"
       />
     </mat-form-field>
 

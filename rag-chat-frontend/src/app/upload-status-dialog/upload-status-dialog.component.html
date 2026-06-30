@@ -4,7 +4,7 @@
   <div class="status-header">
     <span class="status-text">{{ data.status }}</span>
     <mat-progress-spinner
-      *ngIf="!data.hasError && data.status !== 'completed' && data.status !== 'failed'"
+      *ngIf="!data.hasError && data.status !== 'Indexed' && data.status !== 'Completed' && data.status !== 'Failed'"
       diameter="24"
       mode="indeterminate"
     >

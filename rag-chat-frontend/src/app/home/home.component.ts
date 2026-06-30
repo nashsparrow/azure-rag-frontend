@@ -134,6 +134,10 @@ export class HomeComponent {
       },
     });
 
+    dialogRef.afterClosed().subscribe(() => {
+      this.getAllDocuments();
+    });
+
     const pollSub = timer(0, 1500)
       .pipe(
         switchMap(() =>

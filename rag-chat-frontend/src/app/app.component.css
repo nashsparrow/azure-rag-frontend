@@ -1,14 +1,4 @@
 :host {
   display: block;
-  padding: 2rem;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.content {
-  max-width: 42rem;
+  min-height: 100dvh;
 }
