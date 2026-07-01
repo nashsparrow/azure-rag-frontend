@@ -58,6 +58,10 @@
   justify-content: flex-end;
 }
 
+.system-row {
+  justify-content: center;
+}
+
 .bot-icon {
   width: 36px;
   height: 36px;
@@ -80,6 +84,13 @@
 
 .bot-bubble {
   background: var(--bot-bubble);
+}
+
+.system-bubble {
+  max-width: 100%;
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: #991b1b;
 }
 
 .message-text {

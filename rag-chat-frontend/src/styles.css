@@ -47,3 +47,13 @@ body {
   --mdc-outlined-button-outline-color:  var(--primary);
 }
 
+.app-snackbar-error {
+  --mdc-snackbar-container-color: #fef2f2;
+  --mdc-snackbar-supporting-text-color: #991b1b;
+  --mat-snack-bar-button-color: #b91c1c;
+}
+
+.app-snackbar-centered {
+  margin-top: 42vh !important;
+}
+

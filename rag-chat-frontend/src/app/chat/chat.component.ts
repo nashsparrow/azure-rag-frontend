@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -27,6 +28,7 @@ import { ApiService } from '../services/api.service';
     MatInputModule,
     MatFormFieldModule,
     MatProgressBarModule,
+    MatSnackBarModule,
   ],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.css',
@@ -43,13 +45,17 @@ export class ChatComponent implements AfterViewChecked {
 
   messages: Message[] = [];
   apiService = inject(ApiService);
+  snackBar = inject(MatSnackBar);
 
   get trimmedQuestionLength(): number {
     return this.question.trim().length;
   }
 
   get isQuestionTooShort(): boolean {
-    return this.question.length > 0 && this.trimmedQuestionLength < this.minQuestionLength;
+    return (
+      this.question.length > 0 &&
+      this.trimmedQuestionLength < this.minQuestionLength
+    );
   }
 
   get isQuestionTooLong(): boolean {
@@ -78,7 +84,6 @@ export class ChatComponent implements AfterViewChecked {
 
     this.apiService.getChatResult(question).subscribe({
       next: (response) => {
-        console.log(response);
         this.isAwaitingResponse = false;
         this.messages.push({
           type: 'bot',
@@ -88,8 +93,22 @@ export class ChatComponent implements AfterViewChecked {
         this.pendingScroll = true;
       },
       error: (error) => {
-        console.error('Backend Error:', error);
+        const errorMessage =
+          error.error.message ?? 'Unable to get a response right now.';
+        console.error('Backend Error:', errorMessage);
+        this.messages.push({
+          type: 'system',
+          text: errorMessage,
+          time: new Date(),
+        });
+        this.snackBar.open(errorMessage, 'Close', {
+          duration: 4000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+          panelClass: ['app-snackbar-error'],
+        });
         this.isAwaitingResponse = false;
+        this.pendingScroll = true;
       },
     });
   }

@@ -7,6 +7,7 @@ import {
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ChatComponent } from '../chat/chat.component';
 import { ApiService } from '../services/api.service';
 import { DocumentListDialogComponent } from '../document-list-dialog/document-list-dialog.component';
@@ -21,6 +22,7 @@ import { catchError, of, switchMap, takeWhile, timer } from 'rxjs';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
+    MatSnackBarModule,
     ChatComponent,
     MatDialogModule,
     CommonModule,
@@ -29,6 +31,8 @@ import { catchError, of, switchMap, takeWhile, timer } from 'rxjs';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  readonly maxUploadSizeInBytes = 3 * 1024 * 1024;
+
   quickCards = [
     {
       icon: 'code',
@@ -63,6 +67,7 @@ export class HomeComponent {
   documents: any[] = [];
   private apiService = inject(ApiService);
   private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
   selectedFile: File | null = null;
   selectedFileName = '';
   jobId = crypto.randomUUID();
@@ -79,6 +84,18 @@ export class HomeComponent {
       return;
     }
 
+    if (!this.isValidPdf(file)) {
+      this.showUploadValidationError('Only PDF files are allowed.');
+      this.resetSelectedFile(input);
+      return;
+    }
+
+    if (file.size > this.maxUploadSizeInBytes) {
+      this.showUploadValidationError('File size must be 3 MB or smaller.');
+      this.resetSelectedFile(input);
+      return;
+    }
+
     this.selectedFile = file;
     this.selectedFileName = file.name;
     this.uploadDocument();
@@ -87,7 +104,6 @@ export class HomeComponent {
   getAllDocuments() {
     this.apiService.getDocuments().subscribe({
       next: (response) => {
-        console.log(response);
         this.documents = response;
       },
       error: (error) => {
@@ -106,7 +122,6 @@ export class HomeComponent {
   uploadDocumenttemp(file: File) {
     this.apiService.uploadDocument(file, this.jobId).subscribe({
       next: (response) => {
-        console.log(response);
         this.documents = response;
       },
       error: (error) => {
@@ -143,8 +158,6 @@ export class HomeComponent {
         switchMap(() =>
           this.apiService.getUploadStatus(jobId).pipe(
             catchError((error) => {
-              console.log('status not ready yet', error);
-
               return of({
                 status: 'Pending',
               });
@@ -161,8 +174,6 @@ export class HomeComponent {
       )
       .subscribe({
         next: (statusResponse) => {
-          console.log('response for status');
-          console.log(statusResponse);
           if (!statusResponse) {
             return;
           }
@@ -263,6 +274,28 @@ export class HomeComponent {
     });
 
     return steps;
+  }
+
+  private isValidPdf(file: File): boolean {
+    return (
+      file.type === 'application/pdf' ||
+      file.name.toLowerCase().endsWith('.pdf')
+    );
+  }
+
+  private resetSelectedFile(input: HTMLInputElement): void {
+    this.selectedFile = null;
+    this.selectedFileName = '';
+    input.value = '';
+  }
+
+  private showUploadValidationError(message: string): void {
+    this.snackBar.open(message, 'Close', {
+      duration: 4000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['app-snackbar-error', 'app-snackbar-centered'],
+    });
   }
 }
 

@@ -11,7 +11,11 @@
 
   <div class="chat-body" #chatBody>
     @for (message of messages; track $index) {
-      <div class="message-row" [class.user-row]="message.type === 'user'">
+      <div
+        class="message-row"
+        [class.user-row]="message.type === 'user'"
+        [class.system-row]="message.type === 'system'"
+      >
         <div class="bot-icon" *ngIf="message.type === 'bot'">
           <mat-icon>smart_toy</mat-icon>
         </div>
@@ -20,6 +24,7 @@
           class="message-bubble"
           [class.user-bubble]="message.type === 'user'"
           [class.bot-bubble]="message.type === 'bot'"
+          [class.system-bubble]="message.type === 'system'"
         >
           <div class="message-text">{{ message.text }}</div>
           <div class="message-time">{{ message.time }}</div>
@@ -49,15 +54,11 @@
         [(ngModel)]="question"
         (ngModelChange)="onQuestionChange($event)"
         placeholder="Enter your question here..."
-        required
         [minlength]="minQuestionLength"
         maxlength="500"
         (keydown.enter)="sendMessage()"
       />
       <mat-hint align="end">{{ question.length }}/{{ maxQuestionLength }}</mat-hint>
-      @if (questionModel.invalid && questionModel.touched && questionModel.errors?.['required']) {
-        <mat-error>Enter a question.</mat-error>
-      }
       @if (questionModel.invalid && questionModel.touched && questionModel.errors?.['minlength']) {
         <mat-error>
           Enter at least {{ minQuestionLength }} characters.
