@@ -20,9 +20,11 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
+        working-directory: ./rag-chat-frontend
         run: npm ci
 
       - name: Build Angular
+        working-directory: ./rag-chat-frontend
         run: npm run build -- --configuration production
 
       - name: Upload Angular build to VM
@@ -31,7 +33,7 @@ jobs:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
           key: ${{ secrets.VM_SSH_KEY }}
-          source: "dist/rag-chat-frontend/browser/*"
+          source: "rag-chat-frontend/dist/rag-chat-frontend/browser/*"
           target: "/tmp/rag-chat-frontend"
 
       - name: Move files and reload Caddy
@@ -43,6 +45,6 @@ jobs:
           script: |
             sudo mkdir -p /var/www/rag-chat-frontend
             sudo rm -rf /var/www/rag-chat-frontend/*
-            sudo cp -r /tmp/rag-chat-frontend/dist/rag-chat-frontend/browser/* /var/www/rag-chat-frontend/
+            sudo cp -r /tmp/rag-chat-frontend/rag-chat-frontend/dist/rag-chat-frontend/browser/* /var/www/rag-chat-frontend/
             sudo chown -R www-data:www-data /var/www/rag-chat-frontend
             sudo systemctl reload caddy
