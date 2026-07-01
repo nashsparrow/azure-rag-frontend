@@ -1,0 +1,203 @@
+<div class="architecture-page">
+  <div class="page-header">
+    <a mat-stroked-button routerLink="/" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Go Back Home
+    </a>
+  </div>
+
+  <mat-card class="hero-card">
+    <p class="eyebrow">System Architecture</p>
+    <h1>Project Architecture Overview</h1>
+    <p class="hero-copy">
+      This page summarizes the platform design, technology stack, data flow,
+      deployment model, and the main diagrams used to explain how the system
+      works end to end.
+    </p>
+  </mat-card>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <h2>Architecture Diagrams</h2>
+      <p>
+        High-level visual flows that explain upload, retrieval, and chat
+        behavior in the system.
+      </p>
+    </div>
+
+    <div class="diagram-stack">
+      <mat-card class="diagram-card">
+        <h3>The Document Upload Pipeline</h3>
+        <p>
+          This diagram shows how a PDF document moves through the upload and
+          indexing pipeline, from API request to blob storage, text extraction,
+          chunk generation, embedding creation, and Azure AI Search indexing.
+        </p>
+        <img
+          src="images/docupload-pipeline.png"
+          alt="Document Upload Pipeline Diagram"
+        />
+      </mat-card>
+
+      <mat-card class="diagram-card">
+        <h3>The Question and Answer Pipeline</h3>
+        <p>
+          This diagram shows how a user question is processed through the
+          standard RAG pipeline, including query embedding generation, chunk
+          retrieval from Azure AI Search, context building, and answer
+          generation using Azure OpenAI.
+        </p>
+        <img
+          src="images/chatpipeline1.png"
+          alt="Question and Answer Pipeline Diagram"
+        />
+      </mat-card>
+
+      <mat-card class="diagram-card">
+        <h3>The Question and Answer Pipeline with Semantic Kernel</h3>
+        <p>
+          This diagram shows how the Semantic Kernel-based query path works,
+          including kernel creation, plugin registration, automatic plugin
+          invocation, context retrieval, and final answer generation.
+        </p>
+        <img
+          src="images/chatpipeline2.png"
+          alt="Question and Answer SK Pipeline Diagram"
+        />
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <h2>Data Flow Diagram</h2>
+      <p>Supporting diagrams for upload checks and chat request movement.</p>
+    </div>
+
+    <div>
+      <mat-card class="mini-card">
+        <h3>DataFlow and Data Checks for Uploading a Document</h3>
+        <img
+          src="images/dataflowupload.png"
+          alt="Data Flow for Document Upload"
+        />
+      </mat-card>
+
+      <mat-card class="mini-card">
+        <h3>DataFlow for Chat Endpoint</h3>
+        <img src="images/dataflowchat.png" alt="Data Flow for Chat Endpoint" />
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <h2>Deployment and Hosting Architecture</h2>
+    </div>
+
+    <mat-card class="summary-card">
+      <p>
+        This project is deployed through GitHub Actions using a Docker-based
+        delivery pipeline. The workflow builds the Docker image, pushes it to
+        GitHub Container Registry, connects to the Azure Virtual Machine, pulls
+        the latest image, and runs the containerized ASP.NET Core API.
+      </p>
+    </mat-card>
+
+    <div>
+      <mat-card class="mini-card">
+        <h3>Components Architecture - Backend</h3>
+        <img src="images/components.png" alt="Components Architecture" />
+      </mat-card>
+
+      <mat-card class="mini-card">
+        <h3>Development and Deployment Architecture</h3>
+        <img src="images/deployflow.png" alt="Deployment Diagram" />
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <h2>Technology Used for the Project</h2>
+      <p>
+        Core services, frameworks, and infrastructure used across the solution.
+      </p>
+    </div>
+
+    <div class="info-grid">
+      <mat-card class="info-card">
+        <h3>ASP.NET Core / .NET 8</h3>
+        <p>
+          Used to build the backend API and orchestrate the document ingestion,
+          indexing, retrieval, and chat workflows.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Azure Blob Storage</h3>
+        <p>
+          Used to store uploaded PDF documents before and during processing.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Azure AI Search</h3>
+        <p>
+          Used to index document chunks and perform vector-based retrieval for
+          relevant context.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Azure OpenAI</h3>
+        <p>
+          Used to generate embeddings for document chunks and user questions,
+          and to generate grounded chat responses.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Semantic Kernel</h3>
+        <p>
+          Used to provide an alternate plugin-based query path for context
+          retrieval and answer generation.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>PostgreSQL</h3>
+        <p>Used to persist document metadata and chat history.</p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Entity Framework Core</h3>
+        <p>Used as the ORM layer for database access and migrations.</p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>PdfPig</h3>
+        <p>Used to extract text content from uploaded PDF files.</p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Docker / Docker Compose</h3>
+        <p>
+          Used to run the API and PostgreSQL locally in a containerized setup.
+        </p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>Application Insights</h3>
+        <p>Used for telemetry and application monitoring.</p>
+      </mat-card>
+
+      <mat-card class="info-card">
+        <h3>xUnit and Moq</h3>
+        <p>
+          Used for unit testing and dependency mocking in the test projects.
+        </p>
+      </mat-card>
+    </div>
+  </section>
+</div>

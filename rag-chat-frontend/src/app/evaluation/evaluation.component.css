@@ -1,0 +1,144 @@
+.evaluation-page {
+  min-height: 100dvh;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  border-color: var(--border-soft) !important;
+  color: var(--primary) !important;
+}
+
+.back-button mat-icon {
+  margin-right: 8px;
+}
+
+.hero-card,
+.table-card {
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 14px 36px rgba(108, 99, 255, 0.08);
+  background: linear-gradient(135deg, #f9f7ff 0%, #ffffff 100%);
+}
+
+.hero-card {
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.hero-card h1,
+.section-heading h2 {
+  margin: 0;
+  color: var(--text);
+}
+
+.hero-card h1 {
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+.hero-copy,
+.section-heading p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-copy {
+  margin-top: 14px;
+  max-width: 76ch;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.details-link:hover {
+  text-decoration: underline;
+}
+
+.section-block {
+  margin-top: 28px;
+}
+
+.section-heading {
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.table-card {
+  padding: 12px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 18px;
+}
+
+.evaluation-table {
+  width: 100%;
+  min-width: 1600px;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.evaluation-table th,
+.evaluation-table td {
+  padding: 12px 10px;
+  border: 1px solid #e7e2fa;
+  text-align: center;
+  font-size: 14px;
+}
+
+.evaluation-table thead th {
+  background: #f4eeff;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.evaluation-table tbody td:first-child,
+.evaluation-table thead th:first-child {
+  position: sticky;
+  left: 0;
+  background: #fbf9ff;
+  z-index: 1;
+}
+
+.evaluation-table tbody tr:nth-child(even) {
+  background: #fcfbff;
+}
+
+@media (max-width: 768px) {
+  .evaluation-page {
+    padding: 16px;
+  }
+
+  .hero-card h1 {
+    font-size: 28px;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
+  }
+}

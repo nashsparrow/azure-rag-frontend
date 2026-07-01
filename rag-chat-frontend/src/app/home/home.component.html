@@ -62,15 +62,26 @@
             <mat-icon>{{ card.icon }}</mat-icon>
             <h6 style="text-align: center">{{ card.title }}</h6>
             <p style="text-align: center">{{ card.subtitle }}</p>
-            <a
-              mat-stroked-button
-              color="primary"
-              class="quick-grid-button"
-              [href]="card.link"
-              target="_blank"
-            >
-              {{ card.action }}
-            </a>
+            @if (card.type === "external") {
+              <a
+                mat-stroked-button
+                color="primary"
+                class="quick-grid-button"
+                [href]="card.link"
+                target="_blank"
+              >
+                {{ card.action }}
+              </a>
+            } @else {
+              <a
+                mat-stroked-button
+                color="primary"
+                class="quick-grid-button"
+                [routerLink]="card.link"
+              >
+                {{ card.action }}
+              </a>
+            }
           </mat-card>
         }
       </div>

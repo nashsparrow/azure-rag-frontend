@@ -14,6 +14,7 @@ import { DocumentListDialogComponent } from '../document-list-dialog/document-li
 import { CommonModule } from '@angular/common';
 import { UploadStatusDialogComponent } from '../upload-status-dialog/upload-status-dialog.component';
 import { catchError, of, switchMap, takeWhile, timer } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +27,7 @@ import { catchError, of, switchMap, takeWhile, timer } from 'rxjs';
     ChatComponent,
     MatDialogModule,
     CommonModule,
+    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -41,6 +43,7 @@ export class HomeComponent {
         'View source code and project repository for the C# and Azure Pipeline.',
       action: 'View Repository',
       link: 'https://github.com/nashsparrow/azure-c-sharp-rag-assistant',
+      type: 'external',
     },
     {
       icon: 'code',
@@ -49,18 +52,23 @@ export class HomeComponent {
         'View source code and project repository for the Frontend implemented in Angular.',
       action: 'View Repository',
       link: 'https://github.com/nashsparrow/azure-rag-frontend',
+      type: 'external',
     },
     {
       icon: 'account_tree',
       title: 'Architecture',
       subtitle: 'Explore the system architecture and pipeline.',
       action: 'View Architecture',
+      link: '/architecture',
+      type: 'internal',
     },
     {
       icon: 'verified_user',
       title: 'Performance Evaluation',
       subtitle: 'Detailed performance analysis and insights.',
       action: 'View Evaluation',
+      link: '/evaluation',
+      type: 'internal',
     },
   ];
 

@@ -1,0 +1,224 @@
+<div class="evaluation-page">
+  <div class="page-header">
+    <a mat-stroked-button routerLink="/" class="back-button">
+      <mat-icon>arrow_back</mat-icon>
+      Go Back Home
+    </a>
+  </div>
+
+  <mat-card class="hero-card">
+    <p class="eyebrow">Performance Evaluation</p>
+    <h1>Performance Evaluation of the System</h1>
+    <p class="hero-copy">
+      Recall&#64;K, Precision&#64;K, MRR, Boundary, and NoAnswer False Positive
+      tests were run for the system using different chunk sizes (250, 350, 500,
+      750, 1000) and different TopK values (1, 3, 5, 7, 10) to evaluate
+      retrieval performance across configurations.
+    </p>
+    <a
+      class="details-link"
+      href="https://github.com/nashsparrow/azure-c-sharp-rag-assistant#Performance-Evaluation"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Further Details in Performance Evaluation
+    </a>
+  </mat-card>
+
+  <section class="section-block">
+    <div class="section-heading">
+      <h2>Evaluation Table</h2>
+      <p>
+        The following table shows percentage-based evaluation results for the
+        configured embedding deployment and tested chunk-size and TopK
+        combinations.
+      </p>
+    </div>
+
+    <mat-card class="table-card">
+      <div class="table-wrap">
+        <table class="evaluation-table">
+          <thead>
+            <tr>
+              <th rowspan="2">Chunk Size</th>
+              <th colspan="5">Recall&#64; Test</th>
+              <th colspan="5">Precision&#64; Test</th>
+              <th colspan="5">MRR&#64; Test</th>
+              <th colspan="5">Hit&#64; Test</th>
+              <th colspan="5">False Positive&#64; Test</th>
+            </tr>
+            <tr>
+              <th>Top1</th>
+              <th>Top3</th>
+              <th>Top5</th>
+              <th>Top7</th>
+              <th>Top10</th>
+              <th>Top1</th>
+              <th>Top3</th>
+              <th>Top5</th>
+              <th>Top7</th>
+              <th>Top10</th>
+              <th>Top1</th>
+              <th>Top3</th>
+              <th>Top5</th>
+              <th>Top7</th>
+              <th>Top10</th>
+              <th>Top1</th>
+              <th>Top3</th>
+              <th>Top5</th>
+              <th>Top7</th>
+              <th>Top10</th>
+              <th>Top1</th>
+              <th>Top3</th>
+              <th>Top5</th>
+              <th>Top7</th>
+              <th>Top10</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>250</td>
+              <td>49.41</td>
+              <td>77.65</td>
+              <td>79.41</td>
+              <td>80.59</td>
+              <td>80.59</td>
+              <td>65.88</td>
+              <td>42.75</td>
+              <td>28.24</td>
+              <td>20.84</td>
+              <td>14.71</td>
+              <td>65.88</td>
+              <td>78.04</td>
+              <td>76.67</td>
+              <td>77.25</td>
+              <td>77.25</td>
+              <td>65.88</td>
+              <td>92.94</td>
+              <td>94.12</td>
+              <td>95.29</td>
+              <td>95.29</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>350</td>
+              <td>48.82</td>
+              <td>72.94</td>
+              <td>74.12</td>
+              <td>74.12</td>
+              <td>75.29</td>
+              <td>62.35</td>
+              <td>38.82</td>
+              <td>24.24</td>
+              <td>17.31</td>
+              <td>12.24</td>
+              <td>62.35</td>
+              <td>73.73</td>
+              <td>72.06</td>
+              <td>72.06</td>
+              <td>73.24</td>
+              <td>62.35</td>
+              <td>89.41</td>
+              <td>89.41</td>
+              <td>89.41</td>
+              <td>90.59</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>500</td>
+              <td>44.12</td>
+              <td>77.06</td>
+              <td>77.06</td>
+              <td>77.65</td>
+              <td>78.24</td>
+              <td>57.65</td>
+              <td>39.61</td>
+              <td>24.47</td>
+              <td>17.65</td>
+              <td>12.47</td>
+              <td>57.65</td>
+              <td>76.86</td>
+              <td>76.67</td>
+              <td>76.37</td>
+              <td>75.49</td>
+              <td>57.65</td>
+              <td>92.94</td>
+              <td>92.94</td>
+              <td>92.94</td>
+              <td>92.94</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>750</td>
+              <td>70.59</td>
+              <td>79.41</td>
+              <td>79.41</td>
+              <td>79.41</td>
+              <td>80.59</td>
+              <td>94.12</td>
+              <td>37.25</td>
+              <td>22.35</td>
+              <td>15.97</td>
+              <td>11.29</td>
+              <td>94.12</td>
+              <td>85.29</td>
+              <td>85.29</td>
+              <td>85.29</td>
+              <td>86.47</td>
+              <td>94.12</td>
+              <td>94.12</td>
+              <td>94.12</td>
+              <td>94.12</td>
+              <td>95.29</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td>1000</td>
+              <td>64.71</td>
+              <td>77.65</td>
+              <td>78.82</td>
+              <td>78.82</td>
+              <td>83.53</td>
+              <td>85.88</td>
+              <td>38.43</td>
+              <td>23.76</td>
+              <td>17.14</td>
+              <td>12.59</td>
+              <td>85.88</td>
+              <td>87.45</td>
+              <td>85.98</td>
+              <td>85.98</td>
+              <td>86.08</td>
+              <td>85.88</td>
+              <td>95.29</td>
+              <td>95.29</td>
+              <td>95.29</td>
+              <td>98.82</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+              <td>100</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card>
+  </section>
+</div>

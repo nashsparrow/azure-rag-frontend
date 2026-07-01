@@ -1,0 +1,160 @@
+.architecture-page {
+  min-height: 100dvh;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.page-header {
+  margin-bottom: 20px;
+}
+
+.back-button {
+  border-color: var(--border-soft) !important;
+  color: var(--primary) !important;
+}
+
+.back-button mat-icon {
+  margin-right: 8px;
+}
+
+.hero-card,
+.info-card,
+.diagram-card,
+.mini-card,
+.summary-card {
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 14px 36px rgba(108, 99, 255, 0.08);
+  background: linear-gradient(135deg, #f9f7ff 0%, #ffffff 100%);
+}
+
+.hero-card {
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.hero-card h1,
+.section-heading h2,
+.info-card h3,
+.diagram-card h3,
+.mini-card h3 {
+  margin: 0;
+  color: var(--text);
+}
+
+.hero-card h1 {
+  font-size: 36px;
+  line-height: 1.15;
+}
+
+.hero-copy,
+.section-heading p,
+.info-card p,
+.diagram-card p,
+.summary-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.hero-copy {
+  margin-top: 14px;
+  max-width: 70ch;
+}
+
+.section-block + .section-block {
+  margin-top: 28px;
+}
+
+.section-heading {
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.info-grid,
+.mini-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.info-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.info-card,
+.diagram-card,
+.mini-card,
+.summary-card {
+  padding: 20px;
+}
+
+.info-card h3,
+.diagram-card h3,
+.mini-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.diagram-stack {
+  display: grid;
+  gap: 16px;
+}
+
+.diagram-card img,
+.mini-card img {
+  display: block;
+  width: 75%;
+  max-width: 100%;
+  margin: 24px auto 8px;
+  border-radius: 18px;
+}
+
+.diagram-placeholder {
+  margin-top: 18px;
+  min-height: 120px;
+  border: 1px dashed #cdbdff;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(230, 205, 253, 0.55) 0%, rgba(255, 255, 255, 0.92) 100%);
+  color: var(--primary);
+  font-weight: 700;
+  text-align: center;
+  padding: 20px;
+}
+
+.diagram-placeholder.compact {
+  min-height: 100px;
+}
+
+@media (max-width: 768px) {
+  .architecture-page {
+    padding: 16px;
+  }
+
+  .hero-card h1 {
+    font-size: 28px;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
+  }
+}
