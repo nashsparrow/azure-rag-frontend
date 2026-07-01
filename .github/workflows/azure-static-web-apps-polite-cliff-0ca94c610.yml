@@ -32,6 +32,18 @@ jobs:
                const coredemo = require('@actions/core')
                return await coredemo.getIDToken()
            result-encoding: string
+      - name: Generate environment.ts from BASE_URL secret
+        working-directory: ./rag-chat-frontend
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+        run: |
+          mkdir -p src/environments
+          cat > src/environments/environment.ts <<EOF
+          export const environment = {
+            production: true,
+            apiBaseUrl: '${BASE_URL}',
+          };
+          EOF
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
