@@ -40,6 +40,35 @@
   background: linear-gradient(135deg, #f7f4ff 0%, #ffffff 100%);
 }
 
+.title-card-content {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  align-items: start;
+  gap: 20px;
+  width: 100%;
+}
+
+.title-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-card-icon {
+  width: 80%;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  padding: 10px;
+  box-shadow: 0 10px 24px rgba(108, 99, 255, 0.12);
+  box-sizing: border-box;
+}
+
+.title-card-copy {
+  min-width: 0;
+}
+
 .all-cards h1 {
   font-size: 30px;
 }
@@ -115,6 +144,14 @@
   .stats-grid,
   .quick-grid {
     grid-template-columns: 1fr;
+  }
+
+  .title-card-content {
+    grid-template-columns: 1fr;
+  }
+
+  .title-card-media {
+    justify-content: center;
   }
 }
 
