@@ -122,7 +122,8 @@ export class HomeComponent {
 
   openDocumentsDialog(): void {
     this.dialog.open(DocumentListDialogComponent, {
-      width: '600px',
+      width: '720px',
+      maxWidth: '92vw',
       data: this.documents,
     });
   }
